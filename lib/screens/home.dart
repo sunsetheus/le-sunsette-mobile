@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:le_sunsette/screens/form.dart';
+import 'package:le_sunsette/screens/list.dart';
+import 'package:le_sunsette/widgets/drawer.dart';
 
 class ShopItem {
   final String name;
@@ -22,6 +25,7 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        iconTheme: const IconThemeData(color: Colors.white),
         title: const Text(
           'Le Sunsette',
           style: TextStyle(
@@ -30,6 +34,7 @@ class MyHomePage extends StatelessWidget {
         ),
         backgroundColor: Colors.blueGrey.shade900,
       ),
+      drawer: const LeftDrawer(),
       body: SingleChildScrollView(
         // Widget wrapper yang dapat discroll
         child: Padding(
@@ -88,6 +93,20 @@ class ShopCard extends StatelessWidget {
             ..hideCurrentSnackBar()
             ..showSnackBar(SnackBar(
                 content: Text("Kamu telah menekan tombol ${item.name}!")));
+
+          if (item.name == "Lihat Item") {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ListPage(),
+                ));
+          } else if (item.name == "Tambah Item") {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const FormPage(),
+                ));
+          }
         },
         child: Container(
           // Container untuk menyimpan Icon dan Text

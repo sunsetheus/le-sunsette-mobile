@@ -2,6 +2,7 @@
 
 ### Navigator tugas
 1. [TUGAS 7](#7)
+1. [TUGAS 8](#8)
 
 # <a id="7">Tugas 7</a>
 ## 1. Apa perbedaan utama antara stateless dan stateful widget dalam konteks pengembangan aplikasi Flutter?
@@ -187,3 +188,35 @@
 3) Perkhatikan keterangan tambahan pada comment, seperti `TUGAS 7:` yang menjelaskan komponen sesuai kriteria tugas 7
 
 </details>
+
+# <a id="8">Tugas 7</a>
+(mohon maaf tugas kali ini tidak diformat :D)
+1.
+Navigator.push() pindah route dengan menggunakan konsep stack, push route baru ke stack sehingga jika kembali, top of stack sebelumnya msh dapat diakses
+
+Navigator.pushReplacement() pindah route dengan menggunakan konsep stack, dengan mengganti top of stack sehingga top of stack sebelumnya akan hilang (rotingnya)
+
+
+2. 
+Row: menampilkan dalam bentuk horizontal
+Column: menampilkan dalam bentuk vertikal
+GridView: menampilkan dalam bentuk grid
+ListView: 
+Center: menampilkan di tengah
+Baseline: Positioning seduai baseline childnya
+Padding: memberikan padding ke widget
+Container: me-wrap widget agar dapat diatur positioningnya
+Expanded: container yang mengambil semua size parent
+SizedBox: Container yang bisa diatur ukurannya
+Align: positioning yang bisa ke kanan, kiri dan sebbagainya (aligning)
+
+TextFormField untuk membuat input karena bisa dinuat validatornya dan dikostumisasi jenis inputnya.
+
+
+Clean architecture pada flutter membagi app jadi 3 bagian? presentation (widget yang berhubungan dengan tampilan app), domain (logic-logic yang digunakan), dan data (data-data yang digunakan)
+
+1. Buat struktur file dan folder seperti repo (seperate mana widged mana yang solid page) 
+2. buat form.dart di screens buat jadi form page, buat data yang diperlukan juga di items.dart (folder widget), artibut datanya bakal jadi requirement di form, set uo validator jg
+3. update routing di tombol halaman utama
+4. tambahin pop up abis pencet save di form
+5. buat drawer (yang kiri aja, jadi pake drawer), tambahin navigasi dan routing ketika tombol dipencet.
