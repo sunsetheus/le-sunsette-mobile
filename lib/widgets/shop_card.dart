@@ -1,6 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:le_sunsette/screens/list.dart';
 import 'package:le_sunsette/screens/form.dart';
+import 'package:le_sunsette/screens/list.dart';
+import 'package:le_sunsette/screens/login.dart';
+import 'package:flutter/material.dart';
+import 'package:pbp_django_auth/pbp_django_auth.dart';
+import 'package:provider/provider.dart';
 
 class ShopItem {
   final String name;
@@ -17,11 +20,12 @@ class ShopCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final request = context.watch<CookieRequest>();
     return Material(
       color: item.color,
       child: InkWell(
         // Area responsive terhadap sentuhan
-        onTap: () {
+        onTap: () async {
           // Memunculkan SnackBar ketika diklik
           ScaffoldMessenger.of(context)
             ..hideCurrentSnackBar()
@@ -33,26 +37,35 @@ class ShopCard extends StatelessWidget {
                 MaterialPageRoute(
                   builder: (context) => const FormPage(),
                 ));
-          } else if (item.name == "Daftar Item") {
+          } else if (item.name == "Lihat Item") {
             Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => const ListPage(),
                 ));
+          } else if (item.name == "Logout") {
+            final response = await request
+                .logout("http://william24-tugas.pbp.cs.ui.ac.id/auth/logout/");
+            String message = response["message"];
+            if (response['status']) {
+              String uname = response["username"];
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                content: Text("$message Sampai jumpa, $uname."),
+              ));
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const LoginPage()),
+              );
+            } else {
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                content: Text("$message"),
+              ));
+            }
           }
         },
-
-        borderRadius: BorderRadius.circular(12),
         child: Container(
           // Container untuk menyimpan Icon dan Text
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            color: item.color,
-            boxShadow: [
-              BoxShadow(spreadRadius: 3),
-            ],
-          ),
-          padding: const EdgeInsets.all(0),
+          padding: const EdgeInsets.all(8),
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -60,7 +73,7 @@ class ShopCard extends StatelessWidget {
                 Icon(
                   item.icon,
                   color: Colors.white,
-                  size: 50.0,
+                  size: 30.0,
                 ),
                 const Padding(padding: EdgeInsets.all(3)),
                 Text(

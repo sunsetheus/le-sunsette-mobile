@@ -1,15 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:le_sunsette/screens/form.dart';
-import 'package:le_sunsette/screens/list.dart';
+import 'package:le_sunsette/widgets/shop_card.dart';
 import 'package:le_sunsette/widgets/drawer.dart';
-
-class ShopItem {
-  final String name;
-  final IconData icon;
-  final Color color; //BONUS TUGAS 7: Penambahan atribut warna
-
-  ShopItem(this.name, this.icon, this.color);
-}
 
 class MyHomePage extends StatelessWidget {
   MyHomePage({Key? key}) : super(key: key);
@@ -23,6 +14,7 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // final request = context.watch<CookieRequest>();
     return Scaffold(
       appBar: AppBar(
         iconTheme: const IconThemeData(color: Colors.white),
@@ -76,61 +68,65 @@ class MyHomePage extends StatelessWidget {
   }
 }
 
-class ShopCard extends StatelessWidget {
-  final ShopItem item;
+// class ShopCard extends StatelessWidget {
+//   final ShopItem item;
 
-  const ShopCard(this.item, {super.key}); // Constructor
+//   const ShopCard(this.item, {super.key}); // Constructor
 
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-      color: item.color,
-      child: InkWell(
-        // Area responsive terhadap sentuhan
-        onTap: () {
-          // Memunculkan SnackBar ketika diklik
-          ScaffoldMessenger.of(context)
-            ..hideCurrentSnackBar()
-            ..showSnackBar(SnackBar(
-                content: Text("Kamu telah menekan tombol ${item.name}!")));
+//   @override
+//   Widget build(BuildContext context) {
+//     final request = context.watch<CookieRequest>();
+//     return Material(
+//       color: item.color,
+//       child: InkWell(
+//         // Area responsive terhadap sentuhan
+//         onTap: () async {
+//           // Memunculkan SnackBar ketika diklik
+//           ScaffoldMessenger.of(context)
+//             ..hideCurrentSnackBar()
+//             ..showSnackBar(SnackBar(
+//                 content: Text("Kamu telah menekan tombol ${item.name}!")));
 
-          if (item.name == "Lihat Item") {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const ListPage(),
-                ));
-          } else if (item.name == "Tambah Item") {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const FormPage(),
-                ));
-          }
-        },
-        child: Container(
-          // Container untuk menyimpan Icon dan Text
-          padding: const EdgeInsets.all(8),
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  item.icon,
-                  color: Colors.white,
-                  size: 30.0,
-                ),
-                const Padding(padding: EdgeInsets.all(3)),
-                Text(
-                  item.name,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(color: Colors.white),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
+//           if (item.name == "Lihat Item") {
+//             Navigator.push(
+//                 context,
+//                 MaterialPageRoute(
+//                   builder: (context) => const ListPage(),
+//                 ));
+//           } else if (item.name == "Tambah Item") {
+//             Navigator.push(
+//                 context,
+//                 MaterialPageRoute(
+//                   builder: (context) => const FormPage(),
+//                 ));
+//           } else if (item.name == "Logout") {
+//             final response = await request
+//                 .logout("http://william24-tugas.pbp.cs.ui.ac.id/auth/logout/");
+//           }
+//         },
+//         child: Container(
+//           // Container untuk menyimpan Icon dan Text
+//           padding: const EdgeInsets.all(8),
+//           child: Center(
+//             child: Column(
+//               mainAxisAlignment: MainAxisAlignment.center,
+//               children: [
+//                 Icon(
+//                   item.icon,
+//                   color: Colors.white,
+//                   size: 30.0,
+//                 ),
+//                 const Padding(padding: EdgeInsets.all(3)),
+//                 Text(
+//                   item.name,
+//                   textAlign: TextAlign.center,
+//                   style: const TextStyle(color: Colors.white),
+//                 ),
+//               ],
+//             ),
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }

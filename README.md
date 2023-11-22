@@ -220,3 +220,33 @@ Clean architecture pada flutter membagi app jadi 3 bagian? presentation (widget 
 3. update routing di tombol halaman utama
 4. tambahin pop up abis pencet save di form
 5. buat drawer (yang kiri aja, jadi pake drawer), tambahin navigasi dan routing ketika tombol dipencet.
+
+
+
+TUGAS 9 (MAAF ASDOS, KERJAINNYA BURU-BURU HEHEHEHEHEHEH)
+1. Bisa tapi tidak lebih baik (todak disarankan) karena akan maintain code nya akan leboh susah (tidak ada validasi, lebih sulit akses data yang diambil). Kalau ada model duluan, kita bisa ubah data ke object dart.
+
+2. Digunakan untuk mengambil cookie dari request pas autentikasi login logout ke server django. Perlu dibagikan ke semua komponen biar bisa dipake oleh semua widget pas mau request ke server django
+
+3. buat model untuk data yang mau diambil dr json (dan utility classnya), pake async buat request data json ke django (pake url yg ud dibuat), ubah data jsonnya biar bisa dipake di flutter dan masukin sbg property dr widget
+
+4. flutter mengirimkan data autentikasi ke server django, lalu django cek dan return response yg sesuai. Kalo valid: retrun session cookies. Flutter ambil session cookies lalu pass ke CookieRequest trus tampilin menu dgn redirect.
+
+5.
+Scaffold: Mengimplementasikan basic material design seperti Drawer, SnackBar, ButtonNavigationBar, AppBar (masih ada file yg diedit dan isinya ada hubungan sama scaffold sih)
+Padding: Memberikan padding pada child.
+Column: Menampilkan childnya secara vertikal (berbentuk kolom)
+InkWell: Membuat tampilan tombol lebih responsif dengan adanya efek ripple ketika diklik
+Center: Menampilkan childnya di tengah
+GridView: Menampilkan data / childnya dalam bentuk grid
+Text: Menampilkan text
+Drawer: buat drawer
+TextFormField: bikin form input
+
+6.
+- modif kode django agar dpt diintegrasikan dengan flutter, redeploy
+- buat model dan utility data yg mau diambil
+- tambahkan provider dan cookie request
+- buat login page, sambungkan dgn url yg ud jadi
+- integrasikan logout page dgn url yg ud jadi
+- buat page display data
